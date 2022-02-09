@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-body">
           <% if user_signed_in? && (current_user.id == course.user_id) %>
-            <h5 class="card-title">名稱:<%= course.name %></h5>
+            <h5 class="card-title"><%= link_to course.name, course_path(course.id) %></h5>
             <p class="card-text">價錢:<%= course.price %></p>
             <p class="card-text">敘述:<%= course.description %></p>
             <p class="card-text">類型:<%= course.courses_type %></p>

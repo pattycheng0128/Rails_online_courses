@@ -1,9 +1,12 @@
 class CoursesController < ApplicationController
-  before_action :find_course, only: [:edit, :update, :destroy]
-  before_action :authenticate!, except: [:index]
+  before_action :find_course, only: [:edit, :update, :show, :destroy]
+  before_action :authenticate!, except: [:index, :show]
 
   def index
     @courses = Course.includes(:user)
+  end
+
+  def show
   end
 
   def new
