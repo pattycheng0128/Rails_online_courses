@@ -12,7 +12,14 @@
             會員
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><%= link_to "新增", new_course_path, class: "dropdown-item"%></li>
+            <% if user_signed_in? %>
+              <%= current_user.email %>
+              <li><%= link_to "登出", sign_out_path, method: 'delete', class: "dropdown-item"%></li>
+              <li><%= link_to "新增", new_course_path, class: "dropdown-item" %></li>
+            <% else %>
+              <%= link_to "註冊", sign_up_path, class: "dropdown-item" %>
+              <%= link_to "登入", sign_in_path, class: "dropdown-item" %>
+            <% end %>
           </ul>
         </li>
       </ul>

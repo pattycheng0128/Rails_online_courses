@@ -1,0 +1,17 @@
+<h1>會員登入</h1>
+
+<%= form_for(@user, url: '/sign_in/check') do |form| %>
+  <div>
+    <%= form.label :email, '信箱' %>
+    <%= form.email_field :email  %>
+  </div>
+
+  <div>
+    <%= form.label :password, '密碼' %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div>
+    <%= form.submit '登入' %>
+  </div>
+<% end %>
