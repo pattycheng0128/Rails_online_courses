@@ -1,25 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
+<div class="container mt-2">
+  <div class="row">
+    <% @courses.each do |course| %>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">名稱:<%= course.name %></h5>
+            <p class="card-text">價錢:<%= course.price %></p>
+            <p class="card-text">敘述:<%= course.description %></p>
+            <p class="card-text">類型:<%= course.courses_type %></p>
+            <%= link_to "修改", edit_course_path(course.id), class:"btn btn-primary" %>
+            <%= link_to "刪除", course_path(course.id), method: "delete", class:"btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-</nav>
+</div>
