@@ -1,8 +1,9 @@
 class CoursesController < ApplicationController
   before_action :find_course, only: [:edit, :update, :destroy]
+  before_action :authenticate!, except: [:index]
 
   def index
-    @courses = Course.all
+    @courses = Course.includes(:user)
   end
 
   def new
@@ -10,7 +11,7 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = Course.new(course_params)
+    @course = current_user.courses.build(course_params)
     if @course.save
       redirect_to root_path, notice: "新增課程成功"
     else
@@ -44,7 +45,7 @@ class CoursesController < ApplicationController
   end
 
   def find_course
-    @course = Course.find(params[:id])
+    @course = current_user.courses.find(params[:id])
   end
 
 end
