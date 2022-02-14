@@ -16,6 +16,11 @@
     <%= form.password_field :password %>
   </div>
 
+   <div>
+    <%= form.label :is_admin, '管理者' %>
+    <%= form.check_box :is_admin %>
+  </div>
+
   <div>
     <%= form.submit '註冊' %>
   </div>

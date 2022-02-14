@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
-  before_action :find_course, only: [:edit, :update, :show, :destroy]
+  before_action :if_not_admin, except: [:index, :show]
+  before_action :find_course, only: [:edit, :update, :destroy]
   before_action :authenticate!, except: [:index, :show]
 
   def index
@@ -7,6 +8,7 @@ class CoursesController < ApplicationController
   end
 
   def show
+    @course = Course.find(params[:id])
   end
 
   def new
@@ -49,6 +51,12 @@ class CoursesController < ApplicationController
 
   def find_course
     @course = current_user.courses.find(params[:id])
+  end
+
+  def if_not_admin
+    if !current_user || !current_user.is_admin?
+      redirect_to courses_path, notice: "您沒有權限"
+    end
   end
 
 end

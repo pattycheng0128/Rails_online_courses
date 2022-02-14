@@ -8,6 +8,11 @@
         <p class="card-text">價格: <%= @course.price %></p>
         <p class="card-text">敘述: <%= @course.description %></p>
         <p class="card-text">類型: <%= @course.courses_type %></p>
+        <%= form_tag cart_items_path, method: :post do %>
+          <%= hidden_field_tag(:course_id, @course.id) %>
+          <%= hidden_field_tag(:cart_type, Cart.cart_types[:buy_now]) %>
+          <button type="submit" class="btn btn-primary">加入購物車</button>
+        <% end %>
       </div>
     </div>
   </div>

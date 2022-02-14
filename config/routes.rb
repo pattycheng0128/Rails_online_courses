@@ -14,4 +14,13 @@ Rails.application.routes.draw do
   
   delete "/sign_out", to: "users#sign_out"
 
+  # carts
+  resources :cart_items, only: [:index, :update, :create, :destroy]
+
+  # orders
+  resources :orders
+
+  # payments
+  resources :payments
+  
 end
