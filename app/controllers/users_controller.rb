@@ -20,9 +20,9 @@ class UsersController < ApplicationController
     user = User.login(params[:user])
     if user
       session[:user_id] = user.id
-      redirect_to "/"
+      redirect_to root_path, notice: "登入成功"
     else
-      render :sign_in, notice: "no user"
+      redirect_to root_path, notice: "您還沒註冊或帳密輸入錯誤"
     end
   end
 
@@ -33,6 +33,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :password, :email)
+    params.require(:user).permit(:username, :password, :email, :is_admin)
   end
 end

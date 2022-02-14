@@ -1,22 +1,22 @@
-<div class="container mt-2">
+<div class="container mt-3">
   <div class="row">
     <% @courses.each do |course| %>
       <div class="col-sm-4">
         <div class="card">
           <div class="card-body">
-          <% if user_signed_in? && (current_user.id == course.user_id) %>
             <h5 class="card-title"><%= link_to course.name, course_path(course.id) %></h5>
-            <p class="card-text">價錢:<%= course.price %></p>
-            <p class="card-text">敘述:<%= course.description %></p>
-            <p class="card-text">類型:<%= course.courses_type %></p>
-            <%= link_to "修改", edit_course_path(course.id), class:"btn btn-primary" %>
-            <%= link_to "刪除", course_path(course.id), method: "delete", class:"btn btn-danger", data: { confirm: '確認刪除？' } %>
-          <% else %>
-            <h5 class="card-title">名稱:<%= course.name %></h5>
-            <p class="card-text">價錢:<%= course.price %></p>
-            <p class="card-text">敘述:<%= course.description %></p>
-            <p class="card-text">類型:<%= course.courses_type %></p>
-          <% end %>
+              <% if user_signed_in? && (current_user.id == course.user_id) && (current_user.is_admin?) %>
+                <p class="card-text">價錢:<%= course.price %></p>
+                <p class="card-text">敘述:<%= course.description %></p>
+                <p class="card-text">類型:<%= course.courses_type %></p>
+                <%= link_to "修改", edit_course_path(course.id), class:"btn btn-primary" %>
+                <%= link_to "刪除", course_path(course.id), method: "delete", class:"btn btn-danger", data: { confirm: '確認刪除？' } %>
+              <% else %>
+                <h5 class="card-title">名稱:<%= course.name %></h5>
+                <p class="card-text">價錢:<%= course.price %></p>
+                <p class="card-text">敘述:<%= course.description %></p>
+                <p class="card-text">類型:<%= course.courses_type %></p>
+              <% end %>
           </div>
         </div>
       </div>

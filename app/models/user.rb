@@ -1,7 +1,11 @@
 class User < ApplicationRecord
   validates :email, :username, presence: true
 
+  # after_save :add_carts
+  after_create :create_carts
   has_many :courses
+  has_many :carts
+  has_many :orders
 
   before_create :encryted_password
 
@@ -13,6 +17,21 @@ class User < ApplicationRecord
     encryted_password = Digest::SHA2.hexdigest(salted_password)
 
     self.find_by(email: email, password: encryted_password)
+  end
+
+  def create_carts
+    if carts.blank?
+      Cart.buy_now.create(user: self)
+      Cart.buy_next_time.create(user: self)
+    end
+  end
+
+  def buy_now_cart
+    carts.buy_now.first
+  end
+
+  def buy_now_cart_items
+    carts.buy_now.first.cart_items
   end
 
   private
