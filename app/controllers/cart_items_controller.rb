@@ -19,6 +19,13 @@ class CartItemsController < ApplicationController
     redirect_to cart_items_path, notice: "加入購物車成功"
   end
 
+  def destroy
+    if @cart_item.present?
+      @cart_item.destroy
+      redirect_to cart_items_path, notice: "刪除成功"
+    end
+  end
+
   private
   def get_cart
     @cart = current_user.carts.find_by(cart_type: params[:cart_type])
