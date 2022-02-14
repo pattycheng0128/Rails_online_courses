@@ -5,6 +5,7 @@
         <th scope="col">項目</th>
         <th scope="col">課程名稱</th>
         <th scope="col">課程價格</th>
+        <th scope="col">XXX</th>
       </tr>
     </thead>
     <% @buy_now_items.each_with_index do |item, index| %>
@@ -13,12 +14,14 @@
           <th scope="row"><%= index+1 %></th>
           <td><%= item.course.name %></td>
           <td><%= item.course.price %></td>
+          <td><%= link_to "刪除", cart_item_path(item), method: "delete" %></td>
         </tr>
       </tbody>
     <% end %>
     <tfoot>
       <tr>
         <th scope="row">總金額</th>
+        <td></td>
         <td></td>
         <td><%= @total_price %></td>
       </tr>

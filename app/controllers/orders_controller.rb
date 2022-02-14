@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
     )
     current_user.buy_now_cart_items.each do |cart_item|
       begin
-        OrderItem.create(
+        OrderItem.create!(
           order: @order,
           course: cart_item.course,
           price: cart_item.price
@@ -35,6 +35,7 @@ class OrdersController < ApplicationController
         @order.destroy
 
         redirect_to courses_path, notice: "訂單建立失敗"
+        return
       end
     end
 

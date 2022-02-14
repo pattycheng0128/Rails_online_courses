@@ -4,7 +4,8 @@ class CoursesController < ApplicationController
   before_action :authenticate!, except: [:index, :show]
 
   def index
-    @courses = Course.includes(:user)
+    @q = Course.includes(:user).ransack(params[:q])
+    @courses = @q.result(distinct: true)
   end
 
   def show
