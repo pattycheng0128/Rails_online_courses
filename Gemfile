@@ -31,6 +31,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'grape', '~> 1.6'
 gem 'grape-entity', '~> 0.10.1'
 gem 'ransack', '~> 2.5'
+gem 'rspec-rails'
+gem 'factory_bot_rails'
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
