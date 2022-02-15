@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Heroku:
+* https://railsonlinecourses.herokuapp.com/
 
-Things you may want to cover:
+Frontend:
+* Bootstrap
 
-* Ruby version
+Backend:
+* Rails
 
-* System dependencies
+Database:
+* PostgreSQL
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Gems:
+* grape
+* grape-entity
+* ransack
