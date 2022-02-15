@@ -16,3 +16,6 @@ Gems:
 * grape
 * grape-entity
 * ransack
+* rspec-rails
+* factory_bot_rails
+* faker
