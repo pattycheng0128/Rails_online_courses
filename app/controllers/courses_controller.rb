@@ -34,7 +34,7 @@ class CoursesController < ApplicationController
       @course.update(course_params)
       redirect_to root_path, notice: "修改課程成功"
     else
-      render :eidt, notice: "修改課程失敗"
+      render :edit, notice: "修改課程失敗"
     end
   end
 
