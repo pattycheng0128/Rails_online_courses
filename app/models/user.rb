@@ -31,7 +31,7 @@ class User < ApplicationRecord
   end
 
   def buy_now_cart_items
-    carts.buy_now.first.cart_items
+    buy_now_cart.cart_items
   end
 
   private
